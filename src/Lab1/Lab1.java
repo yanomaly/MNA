@@ -49,19 +49,16 @@ public class Lab1 {
     public double simpIter(){
         double x = (ab[0] + ab[1])/2, xk = log(5*x + 2)/log(4), temp;
         int iteration = 0;
-        while (abs(x - xk) > eps){
-            if(iteration == 0)
-                x = xk;
+        do{
             System.out.printf("%-15s", "iteration: " + iteration);
             System.out.printf("%-25s", " x(k): " + x);
             System.out.printf("%-25s", " |x(k) - x(k+1)|: " + abs(x - xk));
             System.out.println();
             temp = xk;
-            xk = log(5*x + 2)/log(4);
-            if(iteration != 0)
+            xk = log(5*temp + 2)/log(4);
             x = temp;
             iteration++;
-        }
+        }while (abs(x - xk) > eps);
         System.out.printf("%-15s", "iteration: " + iteration);
         System.out.printf("%-25s", " x(k): " + x);
         System.out.printf("%-25s", " |x(k) - x(k+1)|: " + abs(x - xk));
@@ -72,19 +69,16 @@ public class Lab1 {
     public double chebThirdOrder(){
         double x = (ab[0] + ab[1])/2, xk = x - (pow(4, x) - 5*x - 2)/(log(4)*pow(4, x) - 5) - pow(log(4), 2)*pow(4, x)*pow(pow(4, x) - 5*x - 2, 2)/(2*pow((log(4)*pow(4, x) - 5), 3)), temp;
         int iteration = 0;
-        while (abs(x - xk) > eps){
-            if(iteration == 0)
-                x = xk;
+        do{
             System.out.printf("%-15s", "iteration: " + iteration);
             System.out.printf("%-25s", " x(k): " + x);
             System.out.printf("%-25s", " |x(k) - x(k+1)|: " + abs(x - xk));
             System.out.println();
             temp = xk;
-            xk = x - (pow(4, x) - 5*x - 2)/(log(4)*pow(4, x) - 5) - pow(log(4), 2)*pow(4, x)*pow(pow(4, x) - 5*x - 2, 2)/(2*pow((log(4)*pow(4, x) - 5), 3));
-            if(iteration != 0)
+            xk = temp - (pow(4, temp) - 5*temp - 2)/(log(4)*pow(4, temp) - 5) - pow(log(4), 2)*pow(4, temp)*pow(pow(4, temp) - 5*temp - 2, 2)/(2*pow((log(4)*pow(4, temp) - 5), 3));
             x = temp;
             iteration++;
-        }
+        }while (abs(x - xk) > eps);
         System.out.printf("%-15s", "iteration: " + iteration);
         System.out.printf("%-25s", " x(k): " + x);
         System.out.printf("%-25s", " |x(k) - x(k+1)|: " + abs(x - xk));
@@ -95,19 +89,16 @@ public class Lab1 {
     public double newton(){
         double x = (ab[0] + ab[1])/2, xk = x - (pow(4, x) - 5*x - 2)/(log(4)*pow(4, x) - 5), temp;
         int iteration = 0;
-        while (abs(x - xk) > eps || abs(x - xk) == 0){
-            if(iteration == 0)
-                x = xk;
+        do{
             System.out.printf("%-15s", "iteration: " + iteration);
             System.out.printf("%-25s", " x(k): " + x);
             System.out.printf("%-25s", " |x(k) - x(k+1)|: " + abs(x - xk));
             System.out.println();
             temp = xk;
-            xk = x - (pow(4, x) - 5*x - 2)/(log(4)*pow(4, x) - 5);
-            if(iteration != 0)
+            xk = temp - (pow(4, temp) - 5*temp - 2)/(log(4)*pow(4, temp) - 5);
             x = temp;
             iteration++;
-        }
+        }while (abs(x - xk) > eps);
         System.out.printf("%-15s", "iteration: " + iteration);
         System.out.printf("%-25s", " x(k): " + x);
         System.out.printf("%-25s", " |x(k) - x(k+1)|: " + abs(x - xk));
