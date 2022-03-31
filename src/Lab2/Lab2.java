@@ -80,7 +80,7 @@ public class Lab2 {
             F[1][1] = ((16 * Xk1[0] * Xk1[0] - Xk1[1] * Xk1[1] - 4) - (16 * Xk1[0] * Xk1[0] - Xk[1] * Xk[1] - 4)) / (Xk1[1] - Xk[1]);
             Xk = Xk1.clone();
         }
-        System.out.println("Newton result: (" + Xk1[0] + ", " + Xk1[1] + ")");
+        System.out.println("Secants result: (" + Xk1[0] + ", " + Xk1[1] + ")");
     }
 
     public static void Gauss_Seidel() {
@@ -94,18 +94,18 @@ public class Lab2 {
         System.out.printf("%-27s", " x2(k): " + Xk[1]);
         System.out.printf("%-25s", " |x(k) - x(k+1)|: ");
         System.out.println();
-        while (norm > eps && iteration < 100) {
+        while (norm > eps) {
             iteration++;
             Double[] Xkc = Xk.clone();
             while(dlt > eps){
-                Xk1[0] = Xk[0] - (Math.sin(Xk[0] - 0.5 * Xk[1]) + Xk[0] + Xk[1] * Xk[1] - 5)/(Math.cos(Xk[0] - 0.5 * Xk[1]) + 1);
-                dlt = Math.abs(Xk1[0] - Xk[0]);
+                Xk1[0] = Xk[0] - (16 * Xk[0] * Xk[0] - Xk[1] * Xk[1] - 4)/(32 * Xk[0]);
+                dlt = Math.abs(16 * Xk1[0] * Xk1[0] - Xk[1] * Xk[1] - 4);
                 Xk[0] = Xk1[0];
             }
             dlt = 1;
             while(dlt > eps){
-                Xk1[1] = Xk[1] - (16 * Xk1[0] * Xk1[0] - Xk[1] * Xk[1] - 4)/(- 2 * Xk[1]);
-                dlt = Math.abs(Xk1[1] - Xk[1]);
+                Xk1[1] = Xk[1] - (Math.sin(Xk1[0] - 0.5 * Xk[1]) + Xk1[0] + Xk[1] * Xk[1] - 5)/(-0.5*Math.cos(Xk1[0] - 0.5 * Xk[1]) + 2 * Xk[1]);
+                dlt = Math.abs(Math.sin(Xk1[0] - 0.5 * Xk1[1]) + Xk1[0] + Xk1[1] * Xk1[1] - 5);
                 Xk[1] = Xk1[1];
             }
             dlt = 1;
