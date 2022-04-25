@@ -63,19 +63,15 @@ public class Lab3 {
         }
         return solution;
     }
-
     public static double func(double x){
         return sin(2 * x)*log(x + 5);
     }
-
     public static double polinom(Double[][] ratio, double point){
         double value = 0;
         for (int i = 0; i < ratio.length; i++)
-            value += pow(point, ratio.length - i - 1) * ratio[i][0];
+            value += pow(point, i) * ratio[i][0];
         return value;
     }
-
-
     public static double approximation(int n){
         double appr= 0;
         S = new Double[n + 1][n + 1];
@@ -99,8 +95,9 @@ public class Lab3 {
         for (int i = 0; i < (b - a)/h + 1; i++)
            appr += pow(nodes[i] - polinom(approx, a + i*h), 2);
         System.out.println("Polynom: ");
-        for (int i = 0; i < approx.length; i++)
-            System.out.print(approx[i][0] + " * x^" + (approx.length - 1 - i) + " + ");
+            System.out.print(approx[approx.length - 1][0] + " * x^" + (approx.length - 1));
+        for (int i = approx.length - 2; i >= 0; i--)
+            System.out.print(" + " + approx[i][0] + " * x^" + i);
         System.out.println();
         return appr;
     }
@@ -108,7 +105,7 @@ public class Lab3 {
     public static void main(String[] args) {
         for (int i = 0; i < (b - a)/h + 1; i++)
             nodes[i] = func(a + i*h);
-        System.out.println(approximation(3));
-        System.out.println(approximation(6));
+        System.out.println("Delta: \n" + approximation(3));
+        System.out.println("Delta: \n" + approximation(6));
     }
 }
