@@ -2,7 +2,7 @@ package Lab2;
 
 public class Lab2 {
 
-    private static Double eps = Math.pow(0.1, 7);
+    private static Double eps = Math.pow(0.1, 6);
 
     public static void Newton() {
         Double[] Xk = {-Math.PI / 4, -2.3};
@@ -32,8 +32,9 @@ public class Lab2 {
             Xk = Xk1.clone();
         }
         System.out.println("Newton result: (" + Xk1[0] + ", " + Xk1[1] + ")");
-    }
+        System.out.println("||f(x)||: " + Math.max(Math.abs(Math.sin(Xk1[0] - 0.5 * Xk1[1]) + Xk1[0] + Xk1[1] * Xk1[1] - 5), Math.abs(16 * Xk1[0] * Xk1[0] - Xk1[1] * Xk1[1] - 4)));
 
+    }
     public static void Secants() {
         Double[] Xk = {-Math.PI / 4, -2.3};
         Double[] Xk1 = {0.0, 0.0};
@@ -81,10 +82,11 @@ public class Lab2 {
             Xk = Xk1.clone();
         }
         System.out.println("Secants result: (" + Xk1[0] + ", " + Xk1[1] + ")");
-    }
+        System.out.println("||f(x)||: " + Math.max(Math.abs(Math.sin(Xk1[0] - 0.5 * Xk1[1]) + Xk1[0] + Xk1[1] * Xk1[1] - 5), Math.abs(16 * Xk1[0] * Xk1[0] - Xk1[1] * Xk1[1] - 4)));
 
+    }
     public static void Gauss_Seidel() {
-        Double[] Xk = {-Math.PI / 4, -2.3};
+        Double[] Xk = {-1.0, -2.0};
         Double[] Xk1 = {0.0, 0.0};
         double dlt = 1;
         Double norm = 1.0;
@@ -117,6 +119,7 @@ public class Lab2 {
             System.out.println();
         }
         System.out.println("Gauss-Seidel result: (" + Xk1[0] + ", " + Xk1[1] + ")");
+        System.out.println("||f(x)||: " + Math.max(Math.abs(Math.sin(Xk1[0] - 0.5 * Xk1[1]) + Xk1[0] + Xk1[1] * Xk1[1] - 5), Math.abs(16 * Xk1[0] * Xk1[0] - Xk1[1] * Xk1[1] - 4)));
     }
 
     public static Double[][] Gauss_solution(Double matrix_A[][], Double matrix_f[][]) {
