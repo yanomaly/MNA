@@ -105,7 +105,7 @@ public class Lab3 {
     public static void main(String[] args) {
         for (int i = 0; i < (b - a)/h + 1; i++)
             nodes[i] = func(a + i*h);
-        System.out.println("Delta: \n" + approximation(3));
-        System.out.println("Delta: \n" + approximation(6));
+        System.out.println("Delta: \n" + approximation(7));
+        System.out.println("Delta: \n" + approximation(8));
     }
 }
