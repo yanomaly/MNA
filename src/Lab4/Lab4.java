@@ -132,14 +132,14 @@ public class Lab4 {
 
     public static void main(String[] args) {
         System.out.println("f(x) = sin2x * ln(x + 5)");
-        for (int i = 5; i < 25; i+=5) {
+        for (int i = 5; i < 100; i+=5) {
             dimFill1(i);
             dimFill11(i);
             exception1(i);
         }
         System.out.println(" ");
         System.out.println("f(x) = sqrt(2 * |x| + x^2)");
-        for (int i = 5; i < 25; i+=5) {
+        for (int i = 5; i < 100; i+=5) {
             dimFill2(i);
             dimFill22(i);
             exception2(i);
